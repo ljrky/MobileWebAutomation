@@ -1,24 +1,35 @@
-package com.skype.wallet;
+package net.skype.mock;
+
+
+
+import io.selendroid.SelendroidCapabilities;
+import io.selendroid.SelendroidConfiguration;
+import io.selendroid.SelendroidDriver;
+import io.selendroid.SelendroidLauncher;
+import net.skype.mock.HomePage;
+import net.skype.mock.IndexPage;
+
+import com.skype.helper.WaitForLoad;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
+import org.openqa.selenium.remote.DesiredCapabilities;
 import org.testng.Reporter;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
-import com.skype.wallet.HomePage;
-import com.skype.helper.WaitForLoad;
 
 public class HomePageTest {
 
-	protected static WebDriver driver;
+	  private SelendroidLauncher selendroidServer = null;
+	  private WebDriver driver = null;
 
 	@Parameters({ "homePage", "driverPath", "browserType" })
 	@BeforeClass()
-	public void beforeClass(String homePage, String driverPath, String browserType) {
+	public void beforeClass(String homePage, String driverPath, String browserType) throws Exception {
 //		System.setProperty("webdriver.chrome.driver", driverPath);
 //		System.setProperty("webdriver.ie.driver", driverPath);
 //	    driver = new InternetExplorerDriver();
@@ -32,6 +43,19 @@ public class HomePageTest {
 		case "ChromeDriver":
 			System.setProperty("webdriver.chrome.driver", driverPath);
 			driver = new ChromeDriver();
+			break;
+		case "Android":
+		    if (selendroidServer != null) {
+		        selendroidServer.stopSelendroid();
+		      }
+		      SelendroidConfiguration config = new SelendroidConfiguration();
+
+		      selendroidServer = new SelendroidLauncher(config);
+		      selendroidServer.lauchSelendroid();
+
+		      DesiredCapabilities caps = SelendroidCapabilities.android();
+
+		      driver = new SelendroidDriver(caps);
 			break;
 		}
 		driver.get(homePage);
@@ -49,7 +73,7 @@ public class HomePageTest {
 	    Reporter.log("Test start\n", 1);
 	    Reporter.log("1) Navigate to Homepage; \n", 1);
 		IndexPage indexpage = new IndexPage(driver);
-	    WaitForLoad.WaitForElement(com.skype.wallet.IndexPage.link25USDCreditATU,5000, 5);
+	    WaitForLoad.WaitForElement(net.skype.mock.IndexPage.link25USDCreditATU,5000, 5);
 	    indexpage.clicklink25USDCreditATU();
 
 		HomePage homepage = new HomePage(driver);

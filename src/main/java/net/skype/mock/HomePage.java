@@ -1,4 +1,4 @@
-package com.skype.wallet;
+package net.skype.mock;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
