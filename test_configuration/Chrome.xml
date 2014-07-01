@@ -1,0 +1,19 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="Suite" parallel="false">
+    <test name="Test">
+        <parameter name="driverPath" value="Driver\chromedriver.exe" />
+		<parameter name="browserType" value="ChromeDriver" />
+        <parameter name="homePage" value="https://qalogin.skype.net/logout" />
+		<parameter name="skypeCreditPage" value="https://qasecure.skype.net/wallet/buy/credit" />
+        <parameter name="checkoutPage" value="https://qasecure.skype.net/wallet/checkout" />
+        <parameter name="cardNumber" value="4013430694071065" />
+        <parameter name="nameOnCard" value="mock mock" />
+        <parameter name="ExpiryMonth" value="3" />
+		<parameter name="ExpiryYear" value="2018" />
+        <parameter name="cardSecurityCode" value="555" />
+        <parameter name="skypeName" value="manual_53b1560a6e2a7" />
+        <classes>
+            <class name="net.skype.checkout.CheckOut" />
+        </classes>
+    </test> <!-- Test -->
+</suite> <!-- Suite -->
