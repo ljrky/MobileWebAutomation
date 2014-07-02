@@ -2,6 +2,8 @@ package net.skype.mock;
 
 
 
+import java.net.URL;
+
 import io.selendroid.SelendroidCapabilities;
 import io.selendroid.SelendroidConfiguration;
 import io.selendroid.SelendroidDriver;
@@ -14,7 +16,9 @@ import com.skype.helper.WaitForLoad;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
+import org.openqa.selenium.net.Urls;
 import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.remote.RemoteWebDriver;
 import org.testng.Reporter;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
@@ -57,6 +61,9 @@ public class HomePageTest {
 
 		      driver = new SelendroidDriver(caps);
 			break;
+		case "WP":
+			driver = new RemoteWebDriver(new URL("http://192.168.11.111:8080"), DesiredCapabilities.internetExplorer());
+
 		}
 		driver.get(homePage);
 	}

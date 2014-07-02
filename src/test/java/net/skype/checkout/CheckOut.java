@@ -1,13 +1,21 @@
 package net.skype.checkout;
 
+import java.net.MalformedURLException;
+import java.net.URL;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
+import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.remote.RemoteWebDriver;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
+
+
+
 
 
 import net.skype.checkout.SignIn;
@@ -32,6 +40,18 @@ public class CheckOut {
 		case "ChromeDriver":
 			System.setProperty("webdriver.chrome.driver", driverPath);
 			driver = new ChromeDriver();
+			break;
+		case "WP":
+	        DesiredCapabilities capWP = DesiredCapabilities.internetExplorer();
+	        try {
+	            driver = new RemoteWebDriver(new URL("http://192.168.11.111:8080/status"), capWP);
+	            driver.navigate().to("http://codeplex.com");
+	            System.out.print("I can see its working and dont complain me");
+	        }
+	        catch (MalformedURLException e) {
+	            // TODO Auto-generated catch block
+	            e.printStackTrace();
+	        }
 			break;
 		}
 		driver.get(homePage);

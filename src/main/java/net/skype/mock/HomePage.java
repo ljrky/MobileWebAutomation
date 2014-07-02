@@ -80,7 +80,7 @@ public class HomePage {
 	}
 
 	public void deselectIframe() {
-		driver.switchTo().frame(iFrame);
+		driver.switchTo().defaultContent();
 	}
 
 	public void clickTOS() {
