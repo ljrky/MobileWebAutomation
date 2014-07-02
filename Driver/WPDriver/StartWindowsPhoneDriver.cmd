@@ -1,0 +1,1 @@
+DriverDeployTool.exe /isetool "%ProgramFiles(x86)%\Microsoft SDKs\Windows Phone\v8.1\Tools\IsolatedStorageExplorerTool\ISETool.exe" /targetdevice device /xapfile "WindowsPhoneDriver.xap" /config "WindowsPhoneDriver.xml"  /setenv REMOTEWEBDRIVERIP
