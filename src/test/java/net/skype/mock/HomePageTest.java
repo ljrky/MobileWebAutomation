@@ -63,7 +63,10 @@ public class HomePageTest {
 			break;
 		case "WP":
 			driver = new RemoteWebDriver(new URL("http://192.168.11.111:8080"), DesiredCapabilities.internetExplorer());
-
+			break;
+		case "iOS":
+			driver = new RemoteWebDriver(new URL("http://localhost:5555/wd/hub"), DesiredCapabilities.iphone());
+			break;
 		}
 		driver.get(homePage);
 	}
@@ -86,6 +89,7 @@ public class HomePageTest {
 		HomePage homepage = new HomePage(driver);
 		Reporter.log("2) Filling Card information; \n", 1);
 		String[] CardInformation = {cardNumber, nameOnCard, ExpiryMonth, ExpiryYear, cardSecurityCode};
+	    WaitForLoad.WaitForPageToLoad(net.skype.mock.HomePage.iFrame);
 		homepage.fillCreditCardForm(CardInformation);
 
 	    Reporter.log("3) Click Pay now; \n", 1);
