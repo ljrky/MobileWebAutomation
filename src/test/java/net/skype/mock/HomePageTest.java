@@ -24,6 +24,8 @@ import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
+import org.uiautomation.ios.IOSCapabilities;
+import org.uiautomation.ios.client.uiamodels.impl.RemoteIOSDriver;
 
 
 public class HomePageTest {
@@ -65,7 +67,7 @@ public class HomePageTest {
 			driver = new RemoteWebDriver(new URL("http://192.168.11.111:8080"), DesiredCapabilities.internetExplorer());
 			break;
 		case "iOS":
-			driver = new RemoteWebDriver(new URL("http://localhost:5555/wd/hub"), DesiredCapabilities.iphone());
+			driver = new RemoteIOSDriver(new URL("http://localhost:5555/wd/hub"), (IOSCapabilities) DesiredCapabilities.iphone());
 			break;
 		}
 		driver.get(homePage);

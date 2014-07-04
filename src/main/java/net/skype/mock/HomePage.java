@@ -10,6 +10,7 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.pagefactory.AjaxElementLocatorFactory;
 import org.openqa.selenium.support.pagefactory.ElementLocatorFactory;
 import org.openqa.selenium.support.ui.Select;
+import org.uiautomation.ios.client.uiamodels.impl.RemoteUIAPickerWheel;
 
 import com.skype.helper.WaitForLoad;
 
@@ -62,6 +63,11 @@ public class HomePage {
 		expiryDateMonth.sendKeys(testData_ExpiryMonth);
 	}
 
+	public void selectExpiryMonthInIOS(String testData_ExpiryMonth) {
+		RemoteUIAPickerWheel yearWheel = ((RemoteUIAPickerWheel) expiryDateMonth);
+	    yearWheel.select(testData_ExpiryMonth);
+	}
+
 	public void selectExpiryYear(String testData_ExpiryYear) {
 		expiryDateYear.sendKeys(testData_ExpiryYear);
 	}
@@ -104,6 +110,7 @@ public class HomePage {
 		clickTOS();
 		selectIframe();
 	    selectExpiryMonth(CardInformation[2]);
+//		selectExpiryMonthInIOS("10");
 	    selectExpiryYear(CardInformation[3]);
 	    enterCardNumber(CardInformation[0]);
 	    enterNameOnCard(CardInformation[1]);
