@@ -109,9 +109,9 @@ public class HomePage {
 	public void fillCreditCardForm(String[] CardInformation) {
 		clickTOS();
 		selectIframe();
-	    selectExpiryMonth(CardInformation[2]);
-//		selectExpiryMonthInIOS("10");
-	    selectExpiryYear(CardInformation[3]);
+		selectExpiryMonthInIOS("10");
+//	    selectExpiryMonth(CardInformation[2]);
+//	    selectExpiryYear(CardInformation[3]);
 	    enterCardNumber(CardInformation[0]);
 	    enterNameOnCard(CardInformation[1]);
 	    enterCardSecurityCode(CardInformation[4]);

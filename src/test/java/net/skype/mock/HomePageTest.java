@@ -68,7 +68,16 @@ public class HomePageTest {
 			driver = new RemoteWebDriver(new URL("http://192.168.11.111:8080"), DesiredCapabilities.internetExplorer());
 			break;
 		case "iOS":
+//			driver = IOSDriverAugmenter.getIOSDriver(new RemoteWebDriver(new URL("http://localhost:5555/wd/hub"), DesiredCapabilities.iphone()));
+//			driver = new RemoteWebDriver(new URL("http://192.168.11.144:3001/wd/hub"), DesiredCapabilities.iphone());
+
+			//1st solution
+//			DesiredCapabilities safari = IOSCapabilities.iphone("safari");
+//			driver = new RemoteWebDriver(new URL("http://localhost:5555/wd/hub"), safari);
+
+			//2nd solution
 			driver = IOSDriverAugmenter.getIOSDriver(new RemoteWebDriver(new URL("http://localhost:5555/wd/hub"), DesiredCapabilities.iphone()));
+
 			break;
 		}
 		driver.get(homePage);
